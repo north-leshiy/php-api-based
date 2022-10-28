@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Миграция на SPA</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="shower/themes/rndphp/styles/styles.css">
+</head>
+<body class="shower list">
+<section class="slide preview">
+    <div class="lines"></div>
+    <div class="stripes"></div>
+    <h1>Миграция на API Based стек (и SPA)</h1>
+    <p>Иван Поддубный</p>
+</section>
+
+<style>
+	.white {
+		color: #ffffff !important;
+	}
+</style>
+
+<section class="slide">
+    <h2><span>Кто я</span></h2>
+    <ol>
+        <li>10+ лет в вебе. Прошел путь fullstack, teamlead</li>
+        <li>Пишу на PHP, Typescript, Nodejs (Nest) и React</li>
+        <li>Организатор Ростовского PHP сообщества</li>
+        <li>Влюблен в Linux, OpenSource.</li>
+        <li>Работаю CTO в Вебпрактик (отдел разработки 50+ человек)</li>
+        <li>Член программного комитета Podlodka PHP Crew</li>
+    </ol>
+</section>
+
+<section class="slide clear">
+    <h2><span>В Вебпрактик мы пишем сервисы для корпораций</span></h2>
+    <img style="margin-top: 50px;" class="cover" src="pictures/clients.png" alt="">
+</section>
+
+<!--@todo php love react-->
+<section class="slide">
+    <h2 class="shout">PHPшник который пилит
+        <span style="color: red;">современный</span> фронт в&nbsp;своих&nbsp;проектах</h2>
+</section>
+
+<!-- @todo картинки twig blade php template -->
+<section class="slide">
+    <h2 class="shout">Кто из вас рендерит html PHP шаблонизатором?</h2>
+</section>
+
+<!-- @todo логотипы -->
+<section class="slide">
+    <h2 class="shout">Кто из вас пишет пишет на react/angular/vue?</h2>
+</section>
+
+<section class="slide">
+    <h2 class="shout white">Кто из вас умеет в jquery?</h2>
+    <img class="cover" src="pictures/jquery-dyno.jpg" alt="">
+</section>
+
+<section class="slide">
+    <h2><span>Почему я решил сделать этот доклад</span></h2>
+    <ul>
+        <li>Большое количество PHPшников до сих пор делают проекты с шаблонами на PHP</li>
+        <li>По моим наблюдениям в PHP такой подход выражен гораздо больше чем в Nodejs, Python, Java, C#</li>
+        <li>Многие даже именитые PHPшники рассуждают устаревшими клише</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2 class="shout">Твой доклад устарел лет&nbsp;на&nbsp;5</h2>
+    <img class="place bottom left" src="pictures/mem-old.jpg" alt="" width="200">
+</section>
+
+
+<section class="slide">
+    <h2 class="shout">К моему сожалению для мир PHP он весьма актуален</h2>
+    <img class="place bottom left" src="pictures/pepe.jpg" alt="" width="200">
+</section>
+
+<section class="slide">
+    <h2><span>План доклада</span></h2>
+    <ul>
+        <li>Проблематика и почему переход на клиентский рендер это хорошо</li>
+        <li>Способы прокачки продуктивности</li>
+    </ul>
+</section>
+
+<!-- @todo сделать 2 блока -->
+<section class="slide">
+    <h2><span>Термины</span></h2>
+    <ol>
+        <li>Backend render (blade, twig, php шаблонизатор)</li>
+        <li>Frontend render (SPA, реже MPA)</li>
+    </ol>
+</section>
+
+<section class="slide">
+    <h2>Те же термины, глазами фронтендера</h2>
+    <ul>
+        <li>Backend render: Jquery, legacy</li>
+        <li>Frontend render: React, Vue, Angular</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Те же термины, глазами фронтендера</h2>
+    <ul>
+        <li>Backend render: Императивная парадигма</li>
+        <li>Frontend render: Декларативная парадигма</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Почему же есть в настоящее время проекты которые пишутся с НУЛЯ на старом стеке?</h2>
+    <ol>
+        <li>SSR / SEO</li>
+        <li class="next">Один человек на проекте</li>
+        <li class="next">SPA это сложнее/дороже (?)</li>
+        <li class="next">"Да у них новый framework выходит каждые пол года"</li>
+        <li class="next">Нет опыта</li>
+        <li class="next">"И так же работает"</li>
+    </ol>
+</section>
+
+Один человек на проекте
+
+<section class="slide clear">
+    <h2>1. SSR / SEO</h2>
+    <img class="place top right" src="pictures/ssr.png" alt="" width="650">
+</section>
+
+<section class="slide">
+    <h2>2. Один человек на проекте</h2>
+    <ul>
+        <li class="next">Вы fullstack</li>
+        <li class="next">Вы хотите развиваться как современный fullstack?</li>
+        <li class="next">Понимания принципы работы СОВРЕМЕННОГО фронтенда проще стать тех/тимлидом</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>3. SPA это сложнее/дороже: с точки зрения фронтенда</h2>
+    <ul>
+        <li class="next">Разработка фронтенда на react быстрее чем на jquery</li>
+        <li class="next">БЫСТРЕЕ даже на маленьких проектах</li>
+        <li class="next">На больших проектах профита больше в разы</li>
+        <li class="next">☠ Нужно учить фронтендера бекендерской шаблонизации</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>3. SPA это сложнее/дороже: с точки зрения бекенда</h2>
+    <ul>
+        <li>Отдача данных в JSON <b>ПРОЩЕ</b>, чем натягивание данных в шаблоны</li>
+        <li class="next">Почти на каждом проекты мы в ЛЮБОМ случае пишем API</li>
+        <li class="next">Бекендер не тратит время на двойную логику с состоянием в формах</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Сэкономлю 🤨</h2>
+    <ul>
+        <li>🤑 Возьму джуниора верстальщика, а бекенд пусть натягивает шаблоны</li>
+        <li class="next">☠️ Джуниор верстальщик, наберется в опыт и пойдет за деньгами в react</li>
+        <li class="next">☠️ Современные бекендеры не умеют в верстку</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Инкапсуляция сложности на фронтенде</h2>
+    <ul>
+        <li>ПОЛНОЦЕННЫЙ ФРЕЙМВЕРК</li>
+        <li>SSR</li>
+        <li>Bundle</li>
+        <li>Routing</li>
+        <li>JWT авторизация</li>
+        <li>Оптимизация скорости</li>
+        <li>Data fetching</li>
+        <li>и мн. другое</li>
+    </ul>
+    <img class="place right top" style="margin: 230px 100px 0 0;" src="pictures/nextjs.png" alt="" width="300">
+</section>
+
+<section class="slide">
+    <h2>4. "Да у них новый framework выходит каждые пол года"</h2>
+    <ul>
+        <li>Тройка лидеров FW <b>не менялась более 5 лет</b></li>
+        <li class="next">В реакте не выходило ничего значимого <b>с 2018 года</b> (выход хуков)</li>
+        <li class="next">Выход хуков <b>не сломал</b> обратную совместимость</li>
+        <li class="next">В 2022 вышли новые возможности, <b>не ломающие</b> обратную совместимость</li>
+        <li class="next">У <i>vue/angular</i> менее enterprise стратегия и были переломные моменты</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>5. Нет опыта</h2>
+    <ul>
+        <li>Основы react изучаются за несколько дней</li>
+        <li>Да, в первый раз вы потратите больше времени</li>
+        <li>В остальные итерации вы будете тратить времени меньше</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Проблемы старого подхода: Кадровый вопрос</h2>
+    <ol>
+        <li>демотивация фронтендеров</li>
+        <li class="next">текучка</li>
+        <li class="next">сложность найти кадры на старый стек</li>
+        <li class="next">сложность обучения бекенд шаблонам</li>
+        <li class="next">обучение фронту бекенда когда этого может не требоваться</li>
+    </ol>
+</section>
+
+<section class="slide clear">
+    <h2>Проблемы старого подхода: библиотеки старого стека отмирают</h2>
+    <img width="900" src="pictures/npm-trends.png" alt="">
+</section>
+
+<section class="slide">
+    <h2>Проблемы старого подхода</h2>
+    <ul>
+        <li class="next">Сложность работы в императивном подходе</li>
+        <li class="next">Разделение ответственности</li>
+        <li class="next">Сложность параллельной работы</li>
+        <li class="next">Иногда дублирование логики</li>
+        <li class="next">Сложно внедрить Best Practics Google Page Speed</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Преимущества нового подхода</h2>
+    <ul>
+        <li>Многие задачи решаются ПРОЩЕ</li>
+        <li class="next">Четкое разделение ответственности</li>
+        <li class="next">Легче параллелить работу</li>
+        <li class="next">Кадровый вопрос: рынок и джунов и мидлов на react в изобилии</li>
+        <li class="next">Проще управлять производительностью</li>
+        <li class="next">Конечному потребителю удобнее</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Да я вообще бекендер зачем мне про фронтенд втираешь</h2>
+    <ul>
+        <li>Это был маленький ликбез, который расширил твой кругозор</li>
+        <li>Возможно ты тоже устал работать с шаблонами, хочешь делать апишки и тебе нужны аргументы для руководства</li>
+        <li>Возможно ты хочешь понять почему API based подход это производительнее с точки зрения труда</li>
+        <li>Возможно я развеял часть мифов которые у тебя были</li>
+        <li>Может быть ты через месяц станешь техлидом и будешь выбирать стек проекта =)</li>
+        <li>Дальше будет меньше фронтенда, обещаю ;)</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Можно ли переезжать на API Based стек постепенно?</h2>
+    Конечно!
+    <ul>
+        <li>Начни с небольших новых компонентов</li>
+        <li class="next">Постепенно переводи старые компоненты на новые рельсы</li>
+        <li class="next">В какой то момент полностью переведи на Nextjs</li>
+        <li class="next">Ты восхитителен!</li>
+    </ul>
+
+    С SSR компонентами сложнее, но тоже можно.
+</section>
+
+<section class="slide">
+    <h2>Тонкие/Толстые клиенты</h2>
+    <ul>
+        <li>Тренд на тонкие SPA клиенты</li>
+        <li>State Manager часто не нужен, использовать состояние бекенда + кеш</li>
+        <li>React Query vs Redux</li>
+    </ul>
+</section>
+
+
+<section class="slide">
+    <h2 class="shout">Практика и советы</h2>
+</section>
+
+<section class="slide">
+    <h2 class="shout">Contract first</h2>
+</section>
+
+<section class="slide"><img class="cover" src="pictures/slides/007.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/008.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/009.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/010.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/011.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/012.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/013.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/014.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/015.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/016.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/017.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/018.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/019.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/020.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/021.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/022.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/023.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/024.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/025.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/026.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/027.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/028.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/029.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/030.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/031.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/032.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/033.jpg" alt=""></section>
+<section class="slide"><img class="cover" src="pictures/slides/041.jpg" alt=""></section>
+
+
+<section class="slide">
+    <h2 class="shout">OpenApi</h2>
+</section>
+
+<section class="slide">
+    <h2>OpenApi Gen</h2>
+    <ul>
+        <li>Генерация клиента на фронте</li>
+        <li>- 20% кода на клиенте</li>
+        <li>Снижение зависимости фронта от бекенда: можно спокойно менять post на put, изменений на фронте не понадобится.</li>
+        <li>Снижение ошибок</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>OpenApi Test</h2>
+    <ul>
+        <li>OpenAPI PSR-7 Validator</li>
+        <li>Валидируем в интеграционных тестах или автоматом на middleware</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>OpenApi контракт как можно быстрее</h2>
+    ... но все таки через CodeFirst.
+    <ul>
+        <li>Бекенд в самом начале проектирует дизайн API</li>
+        <li class="next">Выдача частями: начать с определенного изолированного контекста</li>
+        <li class="next">Бекендер пишет контроллеры, и описывает swagger аннотации к этим методам</li>
+        <li class="next">Бекендер делает заглушки на основе типов</li>
+        <li class="next">Фронтендеру не приходится изобретать свой mock сервер</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Ответственность за приемку</h2>
+    <ul>
+        <li>Фронтендер должен принять контракт и дать фидбек.</li>
+        <li>За ошибки контракта отвечают оба, фронтендер, принимающий контракт и пропустивший метод - в равной степени.</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>OpenApi Test</h2>
+    <ul>
+        <li>OpenAPI PSR-7 Validator (PHP)</li>
+        <li>Валидируем в интеграционных тестах или автоматом на middleware</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>OpenApi Тестирование</h2>
+    <ul>
+        <li>Тестировщик имея заглушки, может писать API тесты</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Аутентификация</h2>
+    <ul>
+        <li>Рекомендация использовать oauth/oidc протокол при реализации вместо велосипедов</li>
+        <li class="next">На фронтенд приложение вешаем обертку в виде gogatekeeper</li>
+        <li class="next">Если решите изобрести свой велосипед с JWT (зачем?) то обязательно ознакомьтесь с рекомендациями OWASP</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Аутентификация</h2>
+    <img src="pictures/gatekeeper2.svg" alt="">
+</section>
+
+
+<section class="slide">
+    <h2>Админки</h2>
+    <ul>
+        <li>Генерация админок - боль и рутина.</li>
+        <li>Большинство админок генерируют жуткий и не гибкий код</li>
+        <li>Большинство из них на jquery</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Админки нового поколения (Api Based)</h2>
+    <ul>
+        <li>React Admin vs Refine</li>
+        <li>1. Просто делай Rest Api к сущностям в определенном дизайне</li>
+        <li>2. Декларативно опиши функционал страниц</li>
+        <li>В случае необходимости шага в права/влево - вся гибкость react под рукой</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2 class="shout">А может вообще не делать админку?</h2>
+</section>
+
+<section class="slide">
+    <h2 class="shout">Headless CMS</h2>
+</section>
+
+<section class="slide">
+    <h2>Headless CMS</h2>
+    <ul>
+        <li>Strapi | keystonejs (Nodejs)</li>
+        <li>Cockpit (PHP8)</li>
+        <li>Bitrix/Drupal/Wordpress (API)</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <h2>Конструкторы | API Based</h2>
+    <ul>
+        <li class="next">Tina IO</li>
+    </ul>
+</section>
+
+<section class="slide">
+    <p>
+        <mark>Современная экосистема</mark> дает <br>
+       большое количество
+        <mark>новых инструментов</mark> <br>
+       которые
+        <mark>выпускаются регулярно</mark></p>
+
+    <p>Пробуйте переходить на Api Based стек если вы еще не на нем.</p>
+</section>
+
+<section class="slide">
+    <h2 class="">Спасибо! 🙃</h2>
+    <p>Ваши вопросы</p>
+    Telegram: <a href="https://t.me/northleshiy">@northleshiy</a>
+
+    <p> <img class="place right" src="pictures/qr-code.svg" style="max-width: 300px; margin-right: 300px" alt=""></p>
+
+</section>
+
+
+
+<div class="progress"></div>
+
+<script src="shower/shower.min.js"></script>
+<!-- Copyright © 3000 Yours Truly, Famous Inc. -->
+
+</body>
+</html>
