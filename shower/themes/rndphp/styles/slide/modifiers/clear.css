@@ -6,6 +6,11 @@
 
 /* Number Off */
 
+.slide.clear::before {
+    visibility: hidden;
+    display: none;
+}
+
 .slide.clear::after {
     visibility: hidden;
 }

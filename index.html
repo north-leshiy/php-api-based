@@ -123,8 +123,6 @@
     </ol>
 </section>
 
-Один человек на проекте
-
 <section class="slide clear">
     <h2>1. SSR / SEO</h2>
     <img class="place top right" src="pictures/ssr.png" alt="" width="650">
@@ -241,14 +239,16 @@
     </ul>
 </section>
 
-<section class="slide">
-    <h2>Да я вообще бекендер зачем мне про фронтенд втираешь</h2>
+<section class="slide clear">
+    <h2>Да я вообще бекендер! Зачем мне про фронтенд втираешь?!</h2>
     <ul>
         <li>Это был маленький ликбез, который расширил твой кругозор</li>
-        <li>Возможно ты тоже устал работать с шаблонами, хочешь делать апишки и тебе нужны аргументы для руководства</li>
-        <li>Возможно ты хочешь понять почему API based подход это производительнее с точки зрения труда</li>
-        <li>Возможно я развеял часть мифов которые у тебя были</li>
-        <li>Может быть ты через месяц станешь техлидом и будешь выбирать стек проекта =)</li>
+        <li>Возможно ты тоже устал работать с шаблонами, хочешь делать апишки и тебе нужны
+            <mark>аргументы для руководства</mark></li>
+        <li>Возможно ты хочешь понять почему API based подход это
+            <mark>производительнее с точки зрения труда</mark></li>
+        <li>Возможно ты через месяц
+            <mark>станешь техлидом</mark> <br>и будешь выбирать стек проекта =)</li>
         <li>Дальше будет меньше фронтенда, обещаю ;)</li>
     </ul>
 </section>
@@ -257,13 +257,13 @@
     <h2>Можно ли переезжать на API Based стек постепенно?</h2>
     Конечно!
     <ul>
-        <li>Начни с небольших новых компонентов</li>
+        <li class="next">Начни с небольших новых компонентов</li>
         <li class="next">Постепенно переводи старые компоненты на новые рельсы</li>
         <li class="next">В какой то момент полностью переведи на Nextjs</li>
         <li class="next">Ты восхитителен!</li>
     </ul>
 
-    С SSR компонентами сложнее, но тоже можно.
+    <p class="next">С SSR компонентами сложнее, но тоже можно.</p>
 </section>
 
 <section class="slide">
@@ -275,9 +275,28 @@
     </ul>
 </section>
 
+<section class="slide">
+    <img src="pictures/laravel-livewire.jpg" alt="">
+</section>
+
 
 <section class="slide">
-    <h2 class="shout">Практика и советы</h2>
+    <h2 class="shout">API Based backend</h2>
+</section>
+
+<section class="slide">
+    <h2 class="">Практика и советы</h2>
+    <ul style="margin-top: -20px;">
+        <li>Важность предварительных контрактов</li>
+        <li>OpenApi</li>
+        <li>SwaggerUI</li>
+        <li>OpenAPI Generation</li>
+        <li>OpenAPI Testing</li>
+        <li>Аутентификация</li>
+        <li>Версионирование API</li>
+        <li>Админки и CMS</li>
+        <li>BFF паттерн</li>
+    </ul>
 </section>
 
 <section class="slide">
@@ -295,7 +314,7 @@
 <section class="slide"><img class="cover" src="pictures/slides/015.jpg" alt=""></section>
 <section class="slide"><img class="cover" src="pictures/slides/016.jpg" alt=""></section>
 <section class="slide"><img class="cover" src="pictures/slides/017.jpg" alt=""></section>
-<section class="slide"><img class="cover" src="pictures/slides/018.jpg" alt=""></section>
+<!--<section class="slide"><img class="cover" src="pictures/slides/018.jpg" alt=""></section>-->
 <section class="slide"><img class="cover" src="pictures/slides/019.jpg" alt=""></section>
 <section class="slide"><img class="cover" src="pictures/slides/020.jpg" alt=""></section>
 <section class="slide"><img class="cover" src="pictures/slides/021.jpg" alt=""></section>
@@ -318,6 +337,12 @@
     <h2 class="shout">OpenApi</h2>
 </section>
 
+<section class="slide clear">
+    <h2 style="text-align: center;" class="center">SwaggerUI</h2>
+
+    <img class="cover" src="pictures/swagger-4.png" alt="" width="700">
+</section>
+
 <section class="slide">
     <h2>OpenApi Gen</h2>
     <ul>
@@ -329,35 +354,7 @@
 </section>
 
 <section class="slide">
-    <h2>OpenApi Test</h2>
-    <ul>
-        <li>OpenAPI PSR-7 Validator</li>
-        <li>Валидируем в интеграционных тестах или автоматом на middleware</li>
-    </ul>
-</section>
-
-<section class="slide">
-    <h2>OpenApi контракт как можно быстрее</h2>
-    ... но все таки через CodeFirst.
-    <ul>
-        <li>Бекенд в самом начале проектирует дизайн API</li>
-        <li class="next">Выдача частями: начать с определенного изолированного контекста</li>
-        <li class="next">Бекендер пишет контроллеры, и описывает swagger аннотации к этим методам</li>
-        <li class="next">Бекендер делает заглушки на основе типов</li>
-        <li class="next">Фронтендеру не приходится изобретать свой mock сервер</li>
-    </ul>
-</section>
-
-<section class="slide">
-    <h2>Ответственность за приемку</h2>
-    <ul>
-        <li>Фронтендер должен принять контракт и дать фидбек.</li>
-        <li>За ошибки контракта отвечают оба, фронтендер, принимающий контракт и пропустивший метод - в равной степени.</li>
-    </ul>
-</section>
-
-<section class="slide">
-    <h2>OpenApi Test</h2>
+    <h2>OpenApi Checker</h2>
     <ul>
         <li>OpenAPI PSR-7 Validator (PHP)</li>
         <li>Валидируем в интеграционных тестах или автоматом на middleware</li>
@@ -372,6 +369,26 @@
 </section>
 
 <section class="slide">
+    <h2>OpenApi контракт как можно быстрее (CodeFirst)</h2>
+    <ul style="margin: -20px 0 0">
+        <li>Начало работы с проектирования</li>
+        <li class="next">Выдача частями</li>
+        <li class="next">Контроллеры + аннотации</li>
+        <li class="next">Заглушки</li>
+        <li class="next">Backend => Mock</li>
+    </ul>
+    <img class="place right" style="margin-right: 20px;" src="pictures/design-api.svg" alt="" width="500">
+</section>
+
+<section class="slide">
+    <h2>Ответственность за приемку</h2>
+    <ul>
+        <li>Фронтендер должен принять контракт и дать фидбек.</li>
+        <li>За ошибки контракта отвечают оба, фронтендер, принимающий контракт и пропустивший метод - в равной степени.</li>
+    </ul>
+</section>
+
+<section class="slide">
     <h2>Аутентификация</h2>
     <ul>
         <li>Рекомендация использовать oauth/oidc протокол при реализации вместо велосипедов</li>
@@ -382,9 +399,13 @@
 
 <section class="slide">
     <h2>Аутентификация</h2>
-    <img src="pictures/gatekeeper2.svg" alt="">
+    <img src="pictures/gatekeeper.svg" alt="" width="700">
 </section>
 
+<section class="slide">
+    <h2>Версионирование API</h2>
+    <img class="next" src="pictures/versioning.png" alt="">
+</section>
 
 <section class="slide">
     <h2>Админки</h2>
@@ -396,7 +417,7 @@
 </section>
 
 <section class="slide">
-    <h2>Админки нового поколения (Api Based)</h2>
+    <h2>Админки нового поколения | API Based</h2>
     <ul>
         <li>React Admin vs Refine</li>
         <li>1. Просто делай Rest Api к сущностям в определенном дизайне</li>
@@ -406,7 +427,7 @@
 </section>
 
 <section class="slide">
-    <h2 class="shout">А может вообще не делать админку?</h2>
+    <h2 class="shout">А может вообще<br>не делать админку?</h2>
 </section>
 
 <section class="slide">
@@ -414,30 +435,53 @@
 </section>
 
 <section class="slide">
-    <h2>Headless CMS</h2>
+    <h2>Headless CMS | API Based</h2>
     <ul>
         <li>Strapi | keystonejs (Nodejs)</li>
-        <li>Cockpit (PHP8)</li>
+        <li>Cockpit (PHP8) | ApiPlatform</li>
         <li>Bitrix/Drupal/Wordpress (API)</li>
     </ul>
 </section>
 
 <section class="slide">
-    <h2>Конструкторы | API Based</h2>
+    <h2>BFF Pattern</h2>
     <ul>
-        <li class="next">Tina IO</li>
+        <li class="next">SSR</li>
+        <li class="next">Smart Proxy for Microservices
+            <ul>
+                <li>Фильтрация</li>
+                <li>Агрегация</li>
+                <li>Кэширование</li>
+                <li>Сокрытие данных</li>
+            </ul>
+        </li>
+        <li class="next">Глупый websocket </li>
+        <li class="next">Mock server (?)</li>
     </ul>
 </section>
 
 <section class="slide">
-    <p>
-        <mark>Современная экосистема</mark> дает <br>
+    <h2>Конструкторы | API Based</h2>
+    <video width="600" autoplay="" loop="" muted="" playsinline="" poster="https://res.cloudinary.com/forestry-demo/video/upload/so_0/v1629294438/tina-io/Beta_Launch_Demo.jpg">
+        <source src="https://res.cloudinary.com/forestry-demo/video/upload/q_100,h_584/v1629294438/tina-io/Beta_Launch_Demo.webm" type="video/webm">
+        <source src="https://res.cloudinary.com/forestry-demo/video/upload/q_80,h_584/v1629294438/tina-io/Beta_Launch_Demo.mp4" type="video/mp4">
+    </video>
+</section>
+
+<section class="slide" >
+    <h2>Экосистема</h2>
+    <img src="pictures/ecosystem.svg" width="520" style="margin-top:-20px" alt="">
+</section>
+
+<section class="slide">
+    <p style="font-size: 150%">
+        <mark>Современная Api based экосистема</mark> дает <br>
        большое количество
         <mark>новых инструментов</mark> <br>
        которые
         <mark>выпускаются регулярно</mark></p>
 
-    <p>Пробуйте переходить на Api Based стек если вы еще не на нем.</p>
+    <p  style="font-size: 150%">Пробуйте переходить на Api Based стек<br>если вы еще не на нем.</p>
 </section>
 
 <section class="slide">
@@ -447,9 +491,8 @@
 
     <p> <img class="place right" src="pictures/qr-code.svg" style="max-width: 300px; margin-right: 300px" alt=""></p>
 
+    <p class="place b c" style="font-size: 10px; color: lightgray;">Слайды переписки стырены с классного <a href="https://youtu.be/-mzzT0b9K54">доклада Глеба Михеева</a></p>
 </section>
-
-
 
 <div class="progress"></div>
 
