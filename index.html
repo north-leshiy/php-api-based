@@ -239,14 +239,16 @@
     </ul>
 </section>
 
-<section class="slide">
-    <h2>Да я вообще бекендер зачем мне про фронтенд втираешь</h2>
+<section class="slide clear">
+    <h2>Да я вообще бекендер! Зачем мне про фронтенд втираешь?!</h2>
     <ul>
         <li>Это был маленький ликбез, который расширил твой кругозор</li>
-        <li>Возможно ты тоже устал работать с шаблонами, хочешь делать апишки и тебе нужны аргументы для руководства</li>
-        <li>Возможно ты хочешь понять почему API based подход это производительнее с точки зрения труда</li>
-        <li>Возможно я развеял часть мифов которые у тебя были</li>
-        <li>Может быть ты через месяц станешь техлидом и будешь выбирать стек проекта =)</li>
+        <li>Возможно ты тоже устал работать с шаблонами, хочешь делать апишки и тебе нужны
+            <mark>аргументы для руководства</mark></li>
+        <li>Возможно ты хочешь понять почему API based подход это
+            <mark>производительнее с точки зрения труда</mark></li>
+        <li>Возможно ты через месяц
+            <mark>станешь техлидом</mark> <br>и будешь выбирать стек проекта =)</li>
         <li>Дальше будет меньше фронтенда, обещаю ;)</li>
     </ul>
 </section>
@@ -255,13 +257,13 @@
     <h2>Можно ли переезжать на API Based стек постепенно?</h2>
     Конечно!
     <ul>
-        <li>Начни с небольших новых компонентов</li>
+        <li class="next">Начни с небольших новых компонентов</li>
         <li class="next">Постепенно переводи старые компоненты на новые рельсы</li>
         <li class="next">В какой то момент полностью переведи на Nextjs</li>
         <li class="next">Ты восхитителен!</li>
     </ul>
 
-    С SSR компонентами сложнее, но тоже можно.
+    <p class="next">С SSR компонентами сложнее, но тоже можно.</p>
 </section>
 
 <section class="slide">
@@ -335,9 +337,10 @@
     <h2 class="shout">OpenApi</h2>
 </section>
 
-<section class="slide">
-    <h2 class="">SwaggerUI</h2>
-    <img width="500" src="pictures/swagger.png" alt="">
+<section class="slide clear">
+    <h2 style="text-align: center;" class="center">SwaggerUI</h2>
+
+    <img class="cover" src="pictures/swagger-4.png" alt="" width="700">
 </section>
 
 <section class="slide">
@@ -347,34 +350,6 @@
         <li>- 20% кода на клиенте</li>
         <li>Снижение зависимости фронта от бекенда: можно спокойно менять post на put, изменений на фронте не понадобится.</li>
         <li>Снижение ошибок</li>
-    </ul>
-</section>
-
-<section class="slide">
-    <h2>OpenApi Test</h2>
-    <ul>
-        <li>OpenAPI PSR-7 Validator</li>
-        <li>Валидируем в интеграционных тестах или автоматом на middleware</li>
-    </ul>
-</section>
-
-<section class="slide">
-    <h2>OpenApi контракт как можно быстрее</h2>
-    ... но все таки через CodeFirst.
-    <ul>
-        <li>Бекенд в самом начале проектирует дизайн API</li>
-        <li class="next">Выдача частями: начать с определенного изолированного контекста</li>
-        <li class="next">Бекендер пишет контроллеры, и описывает swagger аннотации к этим методам</li>
-        <li class="next">Бекендер делает заглушки на основе типов</li>
-        <li class="next">Фронтендеру не приходится изобретать свой mock сервер</li>
-    </ul>
-</section>
-
-<section class="slide">
-    <h2>Ответственность за приемку</h2>
-    <ul>
-        <li>Фронтендер должен принять контракт и дать фидбек.</li>
-        <li>За ошибки контракта отвечают оба, фронтендер, принимающий контракт и пропустивший метод - в равной степени.</li>
     </ul>
 </section>
 
@@ -394,6 +369,26 @@
 </section>
 
 <section class="slide">
+    <h2>OpenApi контракт как можно быстрее (CodeFirst)</h2>
+    <ul style="margin: -20px 0 0">
+        <li>Начало работы с проектирования</li>
+        <li class="next">Выдача частями</li>
+        <li class="next">Контроллеры + аннотации</li>
+        <li class="next">Заглушки</li>
+        <li class="next">Backend => Mock</li>
+    </ul>
+    <img class="place right" style="margin-right: 20px;" src="pictures/design-api.svg" alt="" width="500">
+</section>
+
+<section class="slide">
+    <h2>Ответственность за приемку</h2>
+    <ul>
+        <li>Фронтендер должен принять контракт и дать фидбек.</li>
+        <li>За ошибки контракта отвечают оба, фронтендер, принимающий контракт и пропустивший метод - в равной степени.</li>
+    </ul>
+</section>
+
+<section class="slide">
     <h2>Аутентификация</h2>
     <ul>
         <li>Рекомендация использовать oauth/oidc протокол при реализации вместо велосипедов</li>
@@ -404,7 +399,7 @@
 
 <section class="slide">
     <h2>Аутентификация</h2>
-    <img src="pictures/gatekeeper2.svg" alt="">
+    <img src="pictures/gatekeeper.svg" alt="" width="700">
 </section>
 
 <section class="slide">
@@ -443,7 +438,7 @@
     <h2>Headless CMS | API Based</h2>
     <ul>
         <li>Strapi | keystonejs (Nodejs)</li>
-        <li>Cockpit (PHP8)</li>
+        <li>Cockpit (PHP8) | ApiPlatform</li>
         <li>Bitrix/Drupal/Wordpress (API)</li>
     </ul>
 </section>
@@ -498,8 +493,6 @@
 
     <p class="place b c" style="font-size: 10px; color: lightgray;">Слайды переписки стырены с классного <a href="https://youtu.be/-mzzT0b9K54">доклада Глеба Михеева</a></p>
 </section>
-
-
 
 <div class="progress"></div>
 
